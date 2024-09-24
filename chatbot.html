@@ -13,46 +13,40 @@
             margin: 0 auto;
             padding: 20px;
             background-color: #ffffff;
-            
         }
         header {
             color: #2c3e50;
             background-color: #9cf86e;
             font-size: 20px;
             text-align: center;
+            padding: 10px;
         }
         #search-container {
             margin-bottom: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
         }
         #query {
-            width: 70%;
+            width: 100%;
             padding: 10px;
             font-size: 16px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
         }
-        #search-button {
+        #search-button, .search-button {
             padding: 10px 20px;
             font-size: 16px;
             background-color: #60db34;
             color: white;
             border: none;
             cursor: pointer;
+            flex-grow: 1;
+            margin-right: 5px;
         }
-        #search-button:hover {
+        #search-button:hover, .search-button:hover {
             background-color: #42bc05;
         }
-        .search-button {
-            padding: 10px 20px;
-            font-size: 16px;
-            background-color: #60db34;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
-        .search-button:hover {
-            background-color: #42bc05;
-        }
-
-
         #results {
             background-color: #ffffff;
             padding: 20px;
@@ -70,30 +64,49 @@
             color: rgb(89, 89, 89);
         }
         .food-button {
-         background-color: #000000; 
-         color: #ffffff; 
-         position: fixed;
-    top: 13px;
-    right: 1310px;
-    border: none;
-    padding: 15px 15px;
-    border: 1px solid #ffffff;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 18px;
-    font-weight: bold;
-    transition: all 0.3s ease;
-  }
-  
-  .food-button:hover {
-    background-color: #FFC107;
-    transform: translateY(-5px);
-    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
-  }
-  .food-button:active {
-    transform: translateY(0px);
-    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
-  }
+            background-color: #000000; 
+            color: #ffffff; 
+            border: none;
+            padding: 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            position: fixed;
+            top: 13px;
+            left: 15px;
+            transition: all 0.3s ease;
+        }
+        .food-button:hover {
+            background-color: #FFC107;
+            transform: translateY(-5px);
+            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        .food-button:active {
+            transform: translateY(0px);
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Responsive design for mobile */
+        @media screen and (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            #query {
+                width: 100%;
+            }
+            #search-container {
+                flex-direction: column;
+            }
+            #search-button, .search-button {
+                margin-top: 10px;
+                width: 100%;
+            }
+            .food-button {
+                top: 10px;
+                right: 10px;
+            }
+        }
     </style>
     <script src="https://cdn.jsdelivr.net/npm/showdown/dist/showdown.min.js"></script>
 </head>
@@ -106,7 +119,7 @@
     <div id="search-container">
         <input type="text" id="query" placeholder="Welcome Back! Enter Your Questions About Cooking or Recipes.">
         <button id="search-button">Ask AI</button>
-        <a href="index.html" target="_blank">
+        <a href="main.html" target="_blank">
             <button class="search-button">Back</button>
           </a>
     </div>
@@ -152,6 +165,7 @@
                             text: `Suggest recipes based on the following query: ${query}`
                         }]
                     }]
+
                 })
             });
 
